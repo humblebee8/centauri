@@ -1,0 +1,34 @@
+---
+	import Shell from "./Shell.astro";
+
+  // load default components
+	import Mainmenu from "$components/navigation/mainmenu.astro";
+
+  const {title, description, bodyClasses, theme, menuItems} = Astro.props;
+---
+<Shell title={title} description={description} bodyClasses={bodyClasses} theme={theme}>
+  <slot name="htmlhead"></slot>
+  <slot name="headerwrapper">
+    <header>
+      <slot name="contentheader">
+        <Mainmenu menuItems={menuItems} client:load></Mainmenu>
+      </slot>
+    </header>
+  </slot>
+  <slot name="mainwrapper">
+    <main>
+      <slot></slot>
+    </main>
+  </slot>
+  <slot name="footerwrapper">
+    <footer>
+      <slot name="contentfooter">
+        <div class="flex p-3">
+          <div class="flex-grow text-left">LEFT</div>
+          <div class="flex-grow text-center">CENTER</div>
+          <div class="flex-grow text-right">RIGHT</div>
+        </div>
+      </slot>
+    </footer>
+  </slot>
+</Shell>

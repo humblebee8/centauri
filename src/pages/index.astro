@@ -1,0 +1,22 @@
+---
+import Default from "$layouts/Default.astro";
+
+const menuItems = [
+  'Home',
+  'About',
+  'Get started'
+];
+---
+<Default title="default title" description="default description" bodyClasses="default" menuItems={menuItems}>
+	<div class="bg-centauri">
+		<div class="p-6">
+			<h1 class="text-center uppercase font-bold">Test H1</h1>
+		</div>
+	</div>
+</Default>
+
+<style>
+  body {
+    @apply bg-astro text-gray-300;
+  }
+</style>

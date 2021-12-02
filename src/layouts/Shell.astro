@@ -1,0 +1,27 @@
+---
+const {title, description, bodyClasses, theme = 'default'} = Astro.props;
+---
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../reset.css')} />
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../global.css')} />
+    <link rel="stylesheet" type="text/css" href={Astro.resolve(`../themes/${theme}.css`)} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClasses}>
+    <slot name="header" />
+    <slot />
+    <slot name="footer" />
+  </body>
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const disposable = document.querySelectorAll('[disposable]');
+    Array.from(disposable).map(item => {item.remove()});
+  });
+</script>
