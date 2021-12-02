@@ -163,7 +163,7 @@ Inserting content to header and footer is entirely optional, so you can as well 
 	</div>
 </Default>
 ```
-Ofcourse you can change your Menu Items per page.
+Ofcourse you can change your Menu Items per page.  
 
 ## 👀 Learn more about Astro and join the Community!
 
