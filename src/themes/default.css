@@ -25,3 +25,26 @@ h6 {
 .active {
     @apply border-b-8 border-indigo-600;
 }
+label {
+    @apply block mb-2 text-2xl mt-6 italic uppercase text-purple-300;
+}
+input:autofill {
+    @apply bg-purple-900 text-white font-bold;
+}
+input {
+    @apply text-centauri p-3 pl-2 w-full transition-all duration-700 border-4 border-purple-800 rounded-lg;
+}
+input:focus {
+    outline: none;
+    @apply bg-purple-100 text-centauri font-bold border-purple-600 pl-4;
+}
+button:not(.pushable) {
+    @apply border-2 border-purple-800 block w-full text-center py-4 uppercase font-bold text-2xl;
+    box-shadow: 3px 2px 1px 3px #5B21B6;
+}
+button:not(.pushable):hover {
+    @apply bg-purple-600
+}
+.min-height-400 {
+    min-height: 400px;;
+}
