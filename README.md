@@ -165,6 +165,6 @@ Inserting content to header and footer is entirely optional, so you can as well 
 ```
 Ofcourse you can change your Menu Items per page.  
 
-## 👀 Learn more about Astro and join the Community!
+## 👀 Learn more about Astro and join the Community!  
 
 Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
