@@ -1,5 +1,5 @@
 body {
-    @apply text-xl;
+    @apply text-xl bg-astro text-gray-300;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -21,4 +21,7 @@ h5 {
 }
 h6 {
     @apply text-xl;
+}
+.active {
+    @apply border-b-8 border-indigo-600;
 }

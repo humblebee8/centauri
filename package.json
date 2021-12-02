@@ -13,6 +13,11 @@
     "tailwindcss": "^2.2.19"
   },
   "dependencies": {
-    "@astrojs/renderer-svelte": "^0.2.1"
+    "@astrojs/renderer-svelte": "^0.2.1",
+    "astro-xelement": "^2.1.1",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^7.0.1"
   }
 }

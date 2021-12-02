@@ -2,16 +2,34 @@
 	import Shell from "./Shell.astro";
 
   // load default components
-	import Mainmenu from "$components/navigation/mainmenu.astro";
-
-  const {title, description, bodyClasses, theme, menuItems} = Astro.props;
+	import Mainmenu from "$components/navigation/mainmenu.svelte";
+  const titlePrefix = 'Centauri';
+  const titleSeparator = ' | ';
+  const defaultMenuItems = [
+    {
+      label: 'home',
+      slug: ''
+    },
+    {
+      label: 'use it',
+      slug: 'useit'
+    },
+    {
+      label: 'docs',
+      slug: 'docs'
+    }
+  ];
+  const year = new Date().getFullYear();
+  const {title, description, bodyClasses, theme, menuItems = []} = Astro.props;
 ---
-<Shell title={title} description={description} bodyClasses={bodyClasses} theme={theme}>
+<Shell title={titlePrefix + titleSeparator + title} description={description} bodyClasses={bodyClasses} theme={theme}>
   <slot name="htmlhead"></slot>
   <slot name="headerwrapper">
     <header>
       <slot name="contentheader">
-        <Mainmenu menuItems={menuItems} client:load></Mainmenu>
+        <div class="min-h-16 h-16">
+          <Mainmenu menuItems={menuItems && menuItems.length && menuItems.length > 0 ? menuItems : defaultMenuItems} client:load></Mainmenu>
+        </div>
       </slot>
     </header>
   </slot>
@@ -24,9 +42,17 @@
     <footer>
       <slot name="contentfooter">
         <div class="flex p-3">
-          <div class="flex-grow text-left">LEFT</div>
-          <div class="flex-grow text-center">CENTER</div>
-          <div class="flex-grow text-right">RIGHT</div>
+          <div class="flex-grow text-left">
+            <a href="https://github.com/p13rnd/centauri/blob/master/LICENSE.md" target="_blank" title="show license">MIT</a>
+          </div>
+          <div class="flex-grow text-center">
+            <a href="https://github.com/p13rnd/centauri" target="_blank" title="view on github">
+              <img class="mx-auto w-7" src="/images/github.png" alt="github logo">
+            </a>
+          </div>
+          <div class="flex-grow text-right">
+            &commat;{year}
+          </div>
         </div>
       </slot>
     </footer>
