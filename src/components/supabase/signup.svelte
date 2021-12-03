@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
 	import { supabase } from "./client";
+	import { signUpEvent } from "./clientStore";
     import Button3D from "../button/button3D.svelte";
     import Toast from "../vendor/toast.svelte";
     import { toast } from '@zerodevx/svelte-toast';
@@ -12,10 +13,13 @@
     });
 
     let email = '', password = '';
-    const signIn = async() => {
-        const { error } = await supabase.auth.signIn({email, password});
+    const signUp = async () => {
+        // do sign up
+        const {error} = await supabase.auth.signUp({email, password});
         if (null !== error) {
-            toast.push("error: wrong username or password. Are you registered yet?");
+            toast.push(error.message);
+        } else {
+            signUpEvent.set(true);
         }
     }
 </script>
@@ -43,10 +47,10 @@
         required
     >
 
-    <div 
+    <div
         in:blur={{duration: 900, delay: 300}}
         class="mt-4"
     >
-        <Button3D on:click={() => {signIn();}}>SIGN IN</Button3D>
+        <Button3D on:click={() => {signUp();}}>SIGN UP</Button3D>
     </div>
 {/if}

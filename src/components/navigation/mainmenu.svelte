@@ -1,8 +1,8 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import { fly } from "svelte/transition";
-	import { lastMenuClicked } from "$components/navigation/navigationStore";
-	import { session, logoutEvent } from "$components/supabase/clientStore";
+	import { lastMenuClicked } from "../navigation/navigationStore";
+	import { session, logoutEvent } from "../supabase/clientStore";
 
     export let menuItems = [];
     let currentPath = '', visible = false;
@@ -28,7 +28,10 @@
 {#if visible}
     <ul class="w-full flex text-2xl">
         {#each menuItems as item, index}
-            {#if !item.authenticated || 'authenticated' === $session?.role}
+            {#if undefined === item.authenticated || 
+                 (undefined !== item.authenticated && true === item.authenticated && 'authenticated' === $session?.role) ||
+                 (undefined !== item.authenticated && false === item.authenticated && 'authenticated' !== $session?.role)
+            }
                 <li 
                     on:click={() => {lastMenuClicked.set(item.slug)}}
                     transition:fly={{duration: 300, y: -200, delay: index * 100}}

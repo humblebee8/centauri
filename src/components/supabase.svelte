@@ -1,10 +1,11 @@
 <script>
 	import { onMount, onDestroy } from "svelte";
 	import { supabase } from "./supabase/client";
-	import { session as supaSession, logoutEvent } from "./supabase/clientStore";
+	import { session as supaSession, logoutEvent, signUpEvent } from "./supabase/clientStore";
   
 	export let redirectToLogin = '/';
-	export let loginPageSlug = '/login';
+	export let redirectAfterSignUp = '/';
+	export let loginPageSlug = '/signin';
 
 	supaSession.set(supabase.auth.user());
 	supabase.auth.onAuthStateChange((_, session) => {
@@ -23,6 +24,14 @@
 		}
 	});
 
+	const signUp = signUpEvent.subscribe(value => {
+		if (value && true === value) {
+			// fail silent
+			signUpEvent.set(false);
+			document.location = redirectAfterSignUp;
+		}
+	});
+
 	onMount(() => {
 		if ('authenticated' === $supaSession?.role && loginPageSlug === document.location.pathname) {
 			document.location = '/';
@@ -30,7 +39,9 @@
 	});
 
 	onDestroy(() => {
+		// unsubscribe
 		logout();
+		signUp();
 	});
 </script>
 <div on:clicked={(e) => {console.log(e.detail.slug)}}></div>
