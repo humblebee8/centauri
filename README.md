@@ -165,12 +165,61 @@ Inserting content to header and footer is entirely optional, so you can as well 
 ```
 Ofcourse you can change your Menu Items per page.  
 
+## Default props
+
+| prop | description | default |
+|---|---|---|
+| title | the page title | empty string |
+| description | the page description | empty string |
+| bodyClasses | additional body classes | empty string |
+| theme | the theme.css file used (see themes folder) | default |
+| menuItems | menu items displayed on that page | array |
+| loginRedirect | where to redirect to after login | '/' |
+| redirectAfterSetup | where to redirect to after sign up | '/' |
+| loginPageSlug | slug for login page | '/signin' |
+
+### **menuItems**
+
+```js
+    [
+		{
+			label: 'home', // required
+			slug: '' // required
+		},
+		{
+			label: 'use it',
+			slug: 'useit'
+		},
+		{
+			label: 'docs',
+			slug: 'docs',
+			authenticated: false // optional - false = only show to guest users
+		},
+		{
+			label: 'logout',
+			slug: 'logout',
+			preventDefault: true, // don't redirect on click, useful if you need to trigger events
+			authenticated: true // only show to authenticated users
+		}
+	]
+```
+
 ## Authentication with Supabase
 
 1. Setup your login page
 2. add loginRedirect to your Default component
+3. create an account and project at supabase https://supabase.com/ 
+4. enter your **supabase url** and **anon key** in .env (see .env.sample)
+5. enjoy
 
 ```html
+<!-- props that can be set on Default -->
+<!-- 
+	loginRedirect = '/', # where to redirect to after login
+	redirectAfterSignUp = '/', # where to redirect to after sign up
+	loginPageSlug = '/signin' # slug for login page
+-->
+
 <Default title="login" description="join our community" loginRedirect="/docs" loginPageSlug="/myloginpage">
 
 </Default>
