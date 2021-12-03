@@ -165,6 +165,17 @@ Inserting content to header and footer is entirely optional, so you can as well 
 ```
 Ofcourse you can change your Menu Items per page.  
 
+## Authentication with Supabase
+
+1. Setup your login page
+2. add loginRedirect to your Default component
+
+```html
+<Default title="login" description="join our community" loginRedirect="/docs" loginPageSlug="/myloginpage">
+
+</Default>
+```
+
 ## 👀 Learn more about Astro and join the Community!  
 
 Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).

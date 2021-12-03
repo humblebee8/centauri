@@ -1,6 +1,6 @@
 ---
 import Supabase from "$components/supabase.svelte";
-const {title, description, bodyClasses, theme = 'default'} = Astro.props;
+const {title, description, bodyClasses, loginRedirect = '', loginPageSlug = '/login', theme = 'default'} = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -17,7 +17,7 @@ const {title, description, bodyClasses, theme = 'default'} = Astro.props;
     <slot name="header" />
     <slot />
     <slot name="footer" />
-    <Supabase client:only></Supabase>
+    <Supabase redirectToLogin={loginRedirect} {loginPageSlug} client:only></Supabase>
   </body>
 </html>
 

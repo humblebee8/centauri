@@ -17,12 +17,18 @@
     {
       label: 'docs',
       slug: 'docs'
+    },
+    {
+      label: 'logout',
+      slug: 'logout',
+      preventDefault: true,
+      authenticated: true
     }
   ];
   const year = new Date().getFullYear();
-  const {title, description, bodyClasses, theme, menuItems = []} = Astro.props;
+  const {title, description, bodyClasses, theme, menuItems = [], loginRedirect = '', loginPageSlug = '/login'} = Astro.props;
 ---
-<Shell title={titlePrefix + titleSeparator + title} description={description} bodyClasses={bodyClasses} theme={theme}>
+<Shell title={titlePrefix + titleSeparator + title} description={description} bodyClasses={bodyClasses} theme={theme} loginRedirect={loginRedirect} {loginPageSlug}>
   <slot name="htmlhead"></slot>
   <slot name="headerwrapper">
     <header>
