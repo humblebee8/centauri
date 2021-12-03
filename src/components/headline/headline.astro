@@ -1,7 +1,7 @@
 ---
 import XElement from 'astro-xelement'
 
-const fadeIn =[
+const fadeIn = [
     { 
         transform: 'translateY(50px)',
         opacity: 0
@@ -12,7 +12,7 @@ const fadeIn =[
     }
 ];
 
-const fadeOut=[
+const fadeOut = [
     {
         transform: 'translateY(50px)',
         opacity: 0
@@ -32,8 +32,15 @@ const animationTiming = {
 
 <XElement @is="h1"
   class="text-center text-4xl uppercase font-bold"
-  @animate={fadeIn}
-  @timings={animationTiming}
+  @props={[
+    fadeIn,
+    fadeOut,
+    {animationTiming}
+  ]}
+  
+  @visible={(event)=> {
+      event.target.animate(prop_0, prop_2.animationTiming)
+  }}
 >
 <slot/>
 </XElement>

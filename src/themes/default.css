@@ -1,27 +1,55 @@
 body {
-    @apply text-xl bg-astro text-gray-300;
+  @apply text-xl bg-astro text-gray-300;
 }
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 h1 {
-    @apply text-6xl;
+  @apply text-6xl;
 }
 h2 {
-    @apply text-5xl;
+  @apply text-5xl;
 }
 h3 {
-    @apply text-4xl;
+  @apply text-4xl;
 }
 h4 {
-    @apply text-3xl;
+  @apply text-3xl;
 }
 h5 {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 h6 {
-    @apply text-xl;
+  @apply text-xl;
 }
 .active {
-    @apply border-b-8 border-indigo-600;
+  @apply border-b-8 border-indigo-600;
+}
+label {
+  @apply block mb-2 text-2xl mt-6 italic uppercase text-purple-300;
+}
+input:autofill {
+  @apply bg-purple-900 text-white font-bold;
+}
+input {
+  @apply text-centauri p-3 pl-2 w-full transition-all duration-700 border-4 border-purple-800 rounded-lg;
+}
+input:focus {
+  outline: none;
+  @apply bg-purple-100 text-centauri font-bold border-purple-600 pl-4;
+}
+button:not(.pushable) {
+  @apply border-2 border-purple-800 block w-full text-center py-4 uppercase font-bold text-2xl;
+  box-shadow: 3px 2px 1px 3px #5b21b6;
+}
+button:not(.pushable):hover {
+  @apply bg-purple-600;
+}
+.min-height-460 {
+  min-height: 460px;
 }

@@ -2,7 +2,7 @@
 	import Shell from "./Shell.astro";
 
   // load default components
-	import Mainmenu from "$components/navigation/mainmenu.svelte";
+	import Mainmenu from "../components/navigation/mainmenu.svelte";
   const titlePrefix = 'Centauri';
   const titleSeparator = ' | ';
   const defaultMenuItems = [
@@ -16,13 +16,37 @@
     },
     {
       label: 'docs',
-      slug: 'docs'
+      slug: 'docs',
+      authenticated: false
+    },
+    {
+      label: 'logout',
+      slug: 'logout',
+      preventDefault: true,
+      authenticated: true
     }
   ];
   const year = new Date().getFullYear();
-  const {title, description, bodyClasses, theme, menuItems = []} = Astro.props;
+  const {
+    title, 
+    description, 
+    bodyClasses, 
+    theme, 
+    menuItems = [], 
+    loginRedirect = '/', 
+    redirectAfterSignUp = '/', 
+    loginPageSlug = '/signin'
+  } = Astro.props;
 ---
-<Shell title={titlePrefix + titleSeparator + title} description={description} bodyClasses={bodyClasses} theme={theme}>
+<Shell 
+  title={titlePrefix + titleSeparator + title}
+  description={description} 
+  bodyClasses={bodyClasses} 
+  theme={theme} 
+  loginRedirect={loginRedirect} 
+  loginPageSlug={loginPageSlug} 
+  redirectAfterSignUp={redirectAfterSignUp}
+>
   <slot name="htmlhead"></slot>
   <slot name="headerwrapper">
     <header>

@@ -1,0 +1,18 @@
+---
+import Default from "../layouts/Default.astro";
+import Signup from "../components/supabase/signup.svelte";
+---
+<Default title="sign up" description="join our community">
+	<div class="bg-centauri min-height-460">
+		<div class="p-6">
+			<h1 class="text-center text-4xl uppercase font-bold bg-purple-700 py-6 shadow-2xl">Sign up</h1>
+            <Signup client:only></Signup>
+		</div>
+	</div>
+</Default>
+
+<style>
+  body {
+    @apply bg-astro text-gray-300;
+  }
+</style>
