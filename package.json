@@ -9,11 +9,11 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.438",
     "@zerodevx/svelte-toast": "^0.6.2",
     "astro": "latest",
-    "tailwindcss": "^2.2.19",
-    "unplugin-icons": "^0.12.22"
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "svelte-fa": "^2.3.3",
+    "tailwindcss": "^2.2.19"
   },
   "dependencies": {
     "@astrojs/renderer-svelte": "^0.2.1",

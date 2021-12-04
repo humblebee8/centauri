@@ -24,5 +24,11 @@
                 }
             }
         }
+
+        if ('authenticated' !== $session?.role && ('/create/page' === currentPath || '/create/post' === currentPath)) {
+            if ('/signin' !== currentPath) {
+                document.location = '/signin'; 
+            }
+        }
     });
 </script>

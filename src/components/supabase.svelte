@@ -2,7 +2,6 @@
 	import { onDestroy } from "svelte";
 	import { supabase } from "./supabase/client";
 	import RedirectObserver from "./navigation/redirectObserver.svelte";
-	import Adminmenu from "./navigation/adminmenu.svelte";
 	import { session as supaSession, logoutEvent, signUpEvent, session } from "./supabase/clientStore";
 
 	export let afterLoginRedirect = '/';
