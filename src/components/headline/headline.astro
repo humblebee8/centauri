@@ -32,13 +32,15 @@ const animationTiming = {
 
 <XElement @is="h1"
   class="text-center text-4xl uppercase font-bold"
-  @props={[
-    {fadeIn},
-    {timings:animationTiming}
-	]}
+  define:vars={
+    {
+        fadeIn,
+        timing: animationTiming
+    }
+  }
   
   @visible={(event)=> {
-      event.target.animate(prop_fadeIn, prop_timings.animationTiming)
+      event.target.animate(fadeIn, timing)
   }}
 >
 <slot/>

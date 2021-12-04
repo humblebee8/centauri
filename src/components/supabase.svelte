@@ -1,17 +1,28 @@
 <script>
-	import { onMount, onDestroy } from "svelte";
+	import { onDestroy } from "svelte";
 	import { supabase } from "./supabase/client";
-	import { session as supaSession, logoutEvent, signUpEvent } from "./supabase/clientStore";
-  
-	export let redirectToLogin = '/';
-	export let redirectAfterSignUp = '/';
+	import RedirectObserver from "./navigation/redirectObserver.svelte";
+	import Adminmenu from "./navigation/adminmenu.svelte";
+	import { session as supaSession, logoutEvent, signUpEvent, session } from "./supabase/clientStore";
+
+	export let afterLoginRedirect = '/';
+	export let afterSignupRedirect = '/';
 	export let loginPageSlug = '/signin';
 
 	supaSession.set(supabase.auth.user());
 	supabase.auth.onAuthStateChange((_, session) => {
 		if (null !== session) {
 			supaSession.set(session.user);
-			document.location = redirectToLogin;
+			document.location = afterLoginRedirect;
+		}
+	});
+
+	const sessionSub = supaSession.subscribe(value => {
+		if (value) {
+			const currentPath = document.location.pathname;
+			if ('authenticated' === $session?.role && (loginPageSlug === currentPath || '/signup' === currentPath)) {
+				document.location = '/';
+			}
 		}
 	});
 
@@ -28,13 +39,7 @@
 		if (value && true === value) {
 			// fail silent
 			signUpEvent.set(false);
-			document.location = redirectAfterSignUp;
-		}
-	});
-
-	onMount(() => {
-		if ('authenticated' === $supaSession?.role && loginPageSlug === document.location.pathname) {
-			document.location = '/';
+			document.location = afterSignupRedirect;
 		}
 	});
 
@@ -42,6 +47,7 @@
 		// unsubscribe
 		logout();
 		signUp();
+		sessionSub();
 	});
 </script>
-<div on:clicked={(e) => {console.log(e.detail.slug)}}></div>
+<RedirectObserver />

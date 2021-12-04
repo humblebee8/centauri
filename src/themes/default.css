@@ -1,4 +1,7 @@
 body {
+  opacity: 0;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
   @apply text-xl bg-astro text-gray-300;
 }
 h1,

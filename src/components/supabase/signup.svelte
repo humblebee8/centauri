@@ -2,14 +2,18 @@
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
 	import { supabase } from "./client";
-	import { signUpEvent } from "./clientStore";
+	import { signUpEvent, session } from "./clientStore";
     import Button3D from "../button/button3D.svelte";
     import Toast from "../vendor/toast.svelte";
     import { toast } from '@zerodevx/svelte-toast';
 
     let visible = false;
     onMount(() => {
-        visible = true;
+        if ('authenticated' === $session?.role) {
+            document.location = '/';
+        } else {
+            visible = true;
+        }
     });
 
     let email = '', password = '';

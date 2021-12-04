@@ -4,7 +4,7 @@ const {
   title = '', 
   description = '', 
   bodyClasses = '', 
-  redirectAfterSignUp = '/', 
+  afterSignupRedirect = '/', 
   loginRedirect = '/', 
   loginPageSlug = '/signin', 
   theme = 'default'
@@ -21,11 +21,11 @@ const {
     <link rel="stylesheet" type="text/css" href={Astro.resolve(`../themes/${theme}.css`)} />
     <slot name="head" />
   </head>
-  <body class={bodyClasses}>
+  <body class={bodyClasses} onload="document.body.style.opacity='1'">
     <slot name="header" />
     <slot />
     <slot name="footer" />
-    <Supabase redirectToLogin={loginRedirect} loginPageSlug={loginPageSlug} redirectAfterSignUp={redirectAfterSignUp} client:only></Supabase>
+    <Supabase afterLoginRedirect={loginRedirect} loginPageSlug={loginPageSlug} afterSignupRedirect={afterSignupRedirect} client:only></Supabase>
   </body>
 </html>
 

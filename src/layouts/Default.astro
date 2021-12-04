@@ -3,8 +3,29 @@
 
   // load default components
 	import Mainmenu from "../components/navigation/mainmenu.svelte";
+  import Adminmenu from "../components/navigation/adminmenu.svelte";
   const titlePrefix = 'Centauri';
   const titleSeparator = ' | ';
+  const defaultAdminMenuItems = {
+    left: {
+      icon: 'plus',
+      items: [
+        {
+          label: 'page',
+          slug: 'pages/create'
+        }
+      ]
+    },
+    right: {
+      icon: 'cog',
+      items: [
+        {
+          label: 'settings',
+          slug: 'settings'
+        }
+      ]
+    }
+  };
   const defaultMenuItems = [
     {
       label: 'home',
@@ -12,7 +33,8 @@
     },
     {
       label: 'use it',
-      slug: 'useit'
+      slug: 'useit',
+      authenticated: true
     },
     {
       label: 'docs',
@@ -32,9 +54,10 @@
     description, 
     bodyClasses, 
     theme, 
-    menuItems = [], 
+    menuItems = [],
+    adminMenuItems = [],
     loginRedirect = '/', 
-    redirectAfterSignUp = '/', 
+    afterSignupRedirect = '/', 
     loginPageSlug = '/signin'
   } = Astro.props;
 ---
@@ -45,7 +68,7 @@
   theme={theme} 
   loginRedirect={loginRedirect} 
   loginPageSlug={loginPageSlug} 
-  redirectAfterSignUp={redirectAfterSignUp}
+  afterSignupRedirect={afterSignupRedirect}
 >
   <slot name="htmlhead"></slot>
   <slot name="headerwrapper">
@@ -81,4 +104,5 @@
       </slot>
     </footer>
   </slot>
+  <Adminmenu menuItems={adminMenuItems && adminMenuItems.length && adminMenuItems.length > 0 ? adminMenuItems : defaultAdminMenuItems} client:load></Adminmenu>
 </Shell>

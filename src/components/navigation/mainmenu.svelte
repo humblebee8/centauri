@@ -1,7 +1,7 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import { fly } from "svelte/transition";
-	import { lastMenuClicked } from "../navigation/navigationStore";
+	import { lastMenuClicked, menuItems as mainmenu } from "../navigation/navigationStore";
 	import { session, logoutEvent } from "../supabase/clientStore";
 
     export let menuItems = [];
@@ -16,6 +16,7 @@
     });
 
     onMount(() => {
+        mainmenu.set(menuItems);
         currentPath = window.location.pathname.replace('/', '');
         visible = true;
     });
