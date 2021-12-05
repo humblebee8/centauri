@@ -4,6 +4,7 @@
     import Stars from "../effects/stars.svelte";
 	import { session } from "../supabase/clientStore";
     import Fa from 'svelte-fa/src/fa.svelte';
+    
     import {
         faPlusCircle,
         faCog

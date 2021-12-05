@@ -12,5 +12,10 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   //   sitemap: true,
   //   site: 'https://astro.build/',
   // },
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
+  },
   renderers: ['@astrojs/renderer-svelte'],
 });

@@ -9,15 +9,16 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@zerodevx/svelte-toast": "^0.6.2",
     "astro": "latest",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "svelte-fa": "^2.3.3",
     "tailwindcss": "^2.2.19"
   },
   "dependencies": {
     "@astrojs/renderer-svelte": "^0.2.1",
     "@supabase/supabase-js": "^1.28.4",
+    "astro-icon": "^0.2.2",
     "astro-xelement": "latest",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.4",

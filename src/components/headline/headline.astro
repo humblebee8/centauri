@@ -28,10 +28,12 @@ const animationTiming = {
     easing: 'cubic-bezier(0.390, 0.575, 0.565, 1.000)',
     fill: 'both'
 };
+
+const { type = 'h1' } = Astro.props;
 ---
 
-<XElement @is="h1"
-  class="text-center text-4xl uppercase font-bold"
+<XElement @is={type}
+  class="uppercase font-bold"
   define:vars={
     {
         fadeIn,

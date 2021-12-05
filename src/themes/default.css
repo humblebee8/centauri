@@ -65,7 +65,9 @@ button:not(.pushable):hover {
 .cogs.animate svg {
   animation:spin 3s linear infinite;
 }
-
+[astro-icon] {
+  fill: #fff;
+}
 @keyframes spin { 
   100% { 
     -webkit-transform: rotate(360deg); 

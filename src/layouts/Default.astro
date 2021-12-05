@@ -1,5 +1,6 @@
 ---
 	import Shell from "./Shell.astro";
+  import { Icon } from 'astro-icon';
 
   // load default components
 	import Mainmenu from "../components/navigation/mainmenu.svelte";
@@ -39,6 +40,11 @@
     {
       label: 'docs',
       slug: 'docs',
+      authenticated: false
+    },
+    {
+      label: 'sign in',
+      slug: 'signin',
       authenticated: false
     },
     {
@@ -94,7 +100,7 @@
           </div>
           <div class="flex-grow text-center">
             <a href="https://github.com/p13rnd/centauri" target="_blank" title="view on github">
-              <img class="mx-auto w-7" src="/images/github.png" alt="github logo">
+              <Icon class="mx-auto text-4xl" name="github" />
             </a>
           </div>
           <div class="flex-grow text-right">
