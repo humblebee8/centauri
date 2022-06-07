@@ -1,5 +1,5 @@
 # 👽Centauri - flexible astro template
-
+> **NOTE:** #### I DO NOT HAVE TIME TO MAINTAIN THIS AT THE MOMENT. FEEL FREE TO FORK OR USE PARTS OF IT. ####
 > **NOTE:** this is a work in progress and may not be perfect. Feel free to open an issue for suggestions/discussion.
 
 ### **Let's explore Centauri A**
